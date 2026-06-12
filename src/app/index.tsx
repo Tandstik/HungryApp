@@ -9,7 +9,7 @@ import { shouldUseDB, getRecipesFromDB, saveRecipesToDB, aiCardToStoredRecipe, g
 
 const { width, height } = Dimensions.get('window');
 
-const GEMINI_API_KEY = "AIzaSyApyC8h_hDruXqKfHw3yFx5cReep5x0YFs";
+const GEMINI_API_KEY = process.env.EXPO_PUBLIC_GEMINI_API_KEY || "";
 const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
 const INGREDIENTS_DATA = [
