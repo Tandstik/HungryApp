@@ -169,8 +169,8 @@ Lütfen sonucu sadece şu formatta JSON olarak döndür (başka hiçbir markdown
   const getRecipeDetail = async (recipe: any) => {
     setActiveRecipe(recipe);
 
-    // Eğer tarif DB'den geldiyse detaylar zaten var, direkt göster
-    if (recipe._fromDB && recipe.ingredientsList?.length > 0 && recipe.steps?.length > 0) {
+    // Eğer tarif detayları zaten yüklendiyse direkt göster
+    if (recipe.ingredientsList?.length > 0 && recipe.steps?.length > 0) {
       setAppState('RECIPE_DETAIL');
       contentOpacity.value = withTiming(0, { duration: 200 });
       setTimeout(() => contentOpacity.value = withTiming(1, { duration: 500 }), 200);
@@ -214,6 +214,7 @@ Lütfen sonucu sadece şu formatta JSON olarak döndür (başka markdown yazma):
       };
 
       setActiveRecipe(fullRecipe);
+      setRecipes(prev => prev.map(r => r.title === recipe.title ? fullRecipe : r));
       setAppState('RECIPE_DETAIL');
       contentOpacity.value = withTiming(1, { duration: 500 });
 
