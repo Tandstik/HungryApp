@@ -263,7 +263,7 @@ Lütfen sonucu sadece şu formatta JSON olarak döndür (başka markdown yazma):
 
           <Pressable onPress={handleFridgePress} className="justify-center items-center" style={{ width: width * 0.7, height: height * 0.45 }}>
             <Animated.View className="w-full h-full shadow-2xl" style={animatedFridgeStyle}>
-              <Image source={require('../../assets/images/fridge.png')} className="w-full h-full" contentFit="contain" />
+              <Image source={require('../../assets/images/fridge.png')} style={{ width: '100%', height: '100%' }} contentFit="contain" />
             </Animated.View>
           </Pressable>
           <Text className="font-['Nunito_700Bold'] text-base text-blue-600 mt-12 tracking-wide">Açmak için dokunun</Text>
