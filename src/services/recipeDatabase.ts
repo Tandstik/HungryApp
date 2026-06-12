@@ -37,10 +37,10 @@ export const saveRecipesToDB = async (newRecipes: StoredRecipe[]): Promise<void>
     const newOnes = newRecipes.filter(r => !existingTitles.has(r.title.toLowerCase().trim()));
     if (newOnes.length === 0) return;
 
-    await db.insert(recipes).values(newOnes).onConflictDoNothing();
+    await db.insert(recipes).values(newOnes).onConflictDoNothing({ target: recipes.id });
     console.log(`[DB] ${newOnes.length} yeni tarif kaydedildi.`);
   } catch (e) {
-    console.error('[DB] Kaydetme hatası:', e);
+    console.error('[DB] Kaydetme hatası:', e.message, JSON.stringify(e, Object.getOwnPropertyNames(e)));
   }
 };
 

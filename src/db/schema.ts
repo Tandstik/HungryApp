@@ -1,4 +1,4 @@
-import { pgTable, text, integer } from 'drizzle-orm/pg-core';
+import { pgTable, text, bigint } from 'drizzle-orm/pg-core';
 
 export const recipes = pgTable('recipes', {
   id: text('id').primaryKey(),
@@ -9,5 +9,5 @@ export const recipes = pgTable('recipes', {
   ingredientIds: text('ingredientIds').array().notNull(),
   ingredientsList: text('ingredientsList').array().notNull(),
   steps: text('steps').array().notNull(),
-  createdAt: integer('createdAt').notNull(),
+  createdAt: bigint('createdAt', { mode: 'number' }).notNull(),
 });
